@@ -4,6 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { PrestadorProvider } from '../../providers/prestador/prestador';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { error } from '@firebase/database/dist/esm/src/core/util/util';
+import { CategoriesProvider } from '../../providers/categories/categories';
 /**
  * Generated class for the ProviderEditPage page.
  *
@@ -23,10 +24,13 @@ export class ProviderEditPage {
   contact: any;
   imgPath: string;
   fileToUpload: any;
+  public lista = new Array<any>();
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private formBuilder: FormBuilder, private provider: PrestadorProvider,
-    private imagePicker: ImagePicker, private toast: ToastController) {
+    private imagePicker: ImagePicker,
+    public providerC: CategoriesProvider,
+    private toast: ToastController) {
       this.contact = this.navParams.data.contact || { };
       this.imgPath = '';
       
@@ -36,6 +40,23 @@ export class ProviderEditPage {
       
   
       this.setupPageTitle();
+  }
+
+  ionViewDidLoad() {
+    
+    this.providerC.getPrestadores().map(res => res.json()).subscribe(
+      data => {
+        //const response = (data as any);
+        //const obj_retorno = JSON.parse(response._body); 
+ 
+         this.lista = data;
+         
+       console.log(this.lista);
+      }, error => {
+        console.log(error);
+      }
+      
+       );
   }
 
   private setupPageTitle() {

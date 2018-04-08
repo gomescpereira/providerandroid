@@ -17,6 +17,8 @@ import { CustomerProvider } from '../providers/customer/customer';
 import { PrestadorProvider } from '../providers/prestador/prestador';
 import { Geolocation } from '@ionic-native/geolocation';
 import { DatabaseProvider } from '../providers/database/database';
+import { CategoriesProvider } from '../providers/categories/categories';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { DatabaseProvider } from '../providers/database/database';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -44,7 +47,8 @@ import { DatabaseProvider } from '../providers/database/database';
     PrestadorProvider,
     Geolocation,
     ImagePicker,
-    DatabaseProvider
+    DatabaseProvider,
+    CategoriesProvider
   ]
 })
 export class AppModule {}

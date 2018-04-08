@@ -30,20 +30,16 @@
           <button ion-button block color="dark" (click)="escolherFoto()">Escolher foto</button>
         </ion-item>
        
-        <ion-list>
-            <ion-item>
-              <ion-label>Cargo</ion-label>
-              <ion-select formControlName="categoria">
-                <ion-option value="egp">Engenheiro de projetos</ion-option>
-                <ion-option value="ege">Engenheiro de eletrônico</ion-option>
-                <ion-option value="egc">Engenheiro de civil</ion-option>
-                <ion-option value="egm">Técnico de eletrônico</ion-option>
-                <ion-option value="egc">Técnico em eletroténica</ion-option>
-                <ion-option value="egpc">Engenheiro de processos</ion-option>
-              </ion-select>
-            </ion-item>
-          </ion-list>
-    
+        <ion-item>
+          <ion-label>Cargo</ion-label>
+
+          <ion-select formControlName="categoria">
+               <ion-option *ngFor="let category of lista" value="{{ category.name }}"> {{ category.name }} </ion-option>
+          </ion-select>
+       
+        </ion-item>
+   
+
         <ion-item>
           <ion-label stacked>Telefone</ion-label>
           <ion-input type="tel" formControlName="tel"></ion-input>

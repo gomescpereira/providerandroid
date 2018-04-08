@@ -59,7 +59,10 @@ export class HomePage {
     this.navCtrl.push('ProvidersPage' );
   }
   
-
+  Categorias(){
+    this.navCtrl.push('CategoriePage' );
+  }
+  
   editContact() {
     // Maneira 1
     this.navCtrl.push('ContactPage');
